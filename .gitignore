@@ -36,3 +36,5 @@ yarn-error.*
 google-services.json
 GoogleService-Info.plist
 eas.json
+firebase.js
+/hooks/useAuth.js
