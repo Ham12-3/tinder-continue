@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import getMatchedUserInfo from "../../lib/getMatchedUserInfo";
-
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import { db } from "../../firebase";
 const ChatRow = ({ matchedDetails }) => {
   const navigation = useNavigation();
   const [lastMessage, setLastMessage] = useState();
@@ -13,6 +14,15 @@ const ChatRow = ({ matchedDetails }) => {
   //   useEffect(() => {
   //     setMatchedUserInfo(getMatchedUserInfo(matchedDetails.users, user.uid));
   //   }, [matchedDetails, user]);
+  // useEffect(() => {
+  //   onSnapshot(
+  //     query(
+  //       collection(db, "matches", matchDetails.id, "messages"),
+  //       orderBy("timstamp", "desc")
+  //     ),
+  //     (snapshot) => setLastMessage(snapshot.docs[0]?.data()?.message)
+  //   );
+  // }, [matchDetails, db]);
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("Message", {})}
@@ -29,7 +39,7 @@ const ChatRow = ({ matchedDetails }) => {
       />
       <View>
         <Text className="text-lg font-semibold">Elon Musk</Text>
-        <Text>Say Hi</Text>
+        <Text>Message</Text>
       </View>
     </TouchableOpacity>
   );
