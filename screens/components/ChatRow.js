@@ -6,6 +6,7 @@ import getMatchedUserInfo from "../../lib/getMatchedUserInfo";
 
 const ChatRow = ({ matchedDetails }) => {
   const navigation = useNavigation();
+  const [lastMessage, setLastMessage] = useState();
   //   const { user } = useAuth();
   //   const [matchedUserInfo, setMatchedUserInfo] = useState(null);
 
